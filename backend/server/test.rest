@@ -1,0 +1,103 @@
+POST http://localhost:8080/user/signup
+Content-Type: application/json 
+
+{
+    "username" : "tochiamanze",
+    "email" : "cdon@gmail.com",
+    "password" : "tochi12345"
+}
+
+###
+
+POST http://localhost:8080/user/login
+Content-Type: application/json 
+
+{
+    "username" : "tochiamanze",
+    "password" : "tochi12345"
+}
+
+###
+
+POST http://localhost:8080/reviews/deleteReviews/:stationId
+Content-Type: application/json 
+
+{
+    "username" : "tochiamanze",
+    "stationId" : "70155"
+}
+
+###
+GET http://localhost:8081/user/getAll
+Content-Type: application/json
+
+###
+
+POST http://localhost:8081/user/editUser
+Content-Type: application/json 
+
+{
+    "userId" : "635ab8dfc407faf9f73deaf2",
+    "username" : "Tochi Edit",
+    "password" : "dwwrwr"
+}
+
+###
+GET  http://localhost:8081/user/getUserById
+Content-Type: application/json 
+
+{
+    "userId" : "635ab8dfc407faf9f73deaf1"
+}
+
+###
+GET  http://localhost:8081/user/getUserById
+Content-Type: application/json 
+
+{
+    "userId" : "634edb2a16710b2cda6fb370"
+}
+
+GET  http://localhost:8081/userFavorites/
+Content-Type: application/json 
+
+{
+    "userId" : "634edb2a16710b2cda6fb370"
+}
+
+###
+GET  http://localhost:8081/userFavorites/getFavorites/
+Content-Type: application/json 
+
+{
+    "userId" : "634edb2a16710b2cda6fb370"
+}
+
+###
+GET  http://localhost:8081/userReviews/getReviews/
+Content-Type: application/json 
+
+{
+    "userId" : ""
+}
+
+###
+POST  http://localhost:8081/user/deleteAll
+
+// REVIEW RATINGS TESTING
+###
+POST http://localhost:8081/reviewRating/rateReview/65df0e0ef26b5859cec39f1d
+Content-Type: application/json
+
+{
+  "thumbsUp": 1
+}
+
+### 
+GET http://localhost:8081/reviewRating/getRatings/65df0e0ef26b5859cec39f1d
+
+###
+GET http://localhost:8081/reviewRating/getAllRatings
+
+###
+DELETE http://localhost:8081/reviewRating/deleteRating/65df0e0ef26b5859cec39f1d
