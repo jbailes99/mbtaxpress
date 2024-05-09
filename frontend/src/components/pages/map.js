@@ -112,30 +112,28 @@ const LeafletMap = ({ routeTypeFilter }) => {
   })
 
   return (
-    <Container className='p-2 rounded ' style={{ height: '80vh', width: '100%', backgroundColor: 'green' }}>
-      <Container className='p-2 rounded' style={{ height: '100%', width: '100%', backgroundColor: '#165c96' }}>
-        <MapContainer style={{ height: '100%', width: '100%' }} center={[42.3601, -71.0589]} zoom={15}>
-          <TileLayer url='https://tile.openstreetmap.org/{z}/{x}/{y}.png' />
+    <Container className='p-1 rounded' style={{ height: '80vh', width: '100%', backgroundColor: '#165c96' }}>
+      <MapContainer style={{ height: '100%', width: '100%' }} center={[42.3601, -71.0589]} zoom={15}>
+        <TileLayer url='https://tile.openstreetmap.org/{z}/{x}/{y}.png' />
 
-          {trainData.map(train => (
-            <Marker
-              key={train.id}
-              position={[train.attributes.latitude, train.attributes.longitude]}
-              icon={getIconForLine(train.relationships.route.data)}
-            >
-              <Popup>
-                Train ID: {train.id}
-                <br />
-                Status: {train.attributes.current_status}
-                <br />
-                Speed: {train.attributes.speed ? `${train.attributes.speed} mph` : 'N/A'}
-                <br />
-                Direction: {train.direction_id ?? 'N/A'}
-              </Popup>
-            </Marker>
-          ))}
-        </MapContainer>
-      </Container>
+        {trainData.map(train => (
+          <Marker
+            key={train.id}
+            position={[train.attributes.latitude, train.attributes.longitude]}
+            icon={getIconForLine(train.relationships.route.data)}
+          >
+            <Popup>
+              Train ID: {train.id}
+              <br />
+              Status: {train.attributes.current_status}
+              <br />
+              Speed: {train.attributes.speed ? `${train.attributes.speed} mph` : 'N/A'}
+              <br />
+              Direction: {train.direction_id ?? 'N/A'}
+            </Popup>
+          </Marker>
+        ))}
+      </MapContainer>
     </Container>
   )
 }
