@@ -177,7 +177,8 @@ function Stations() {
               {!filterActive && (
                 <>
                   <button
-                    className={`btn btn-secondary me-2 mb-2 ${lineFilter === '' ? 'active' : ''}`}
+                    className={`btn me-2 text-white mb-2 ${lineFilter === '' ? 'active' : ''}`}
+                    style={{ backgroundColor: '#165c96' }}
                     onClick={() => handleLineFilter('')}
                   >
                     All
