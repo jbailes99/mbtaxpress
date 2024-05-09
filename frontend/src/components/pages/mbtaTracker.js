@@ -15,14 +15,15 @@ const Trackerpage = () => {
   return (
     <Container fluid>
       <Row className='justify-content-center'>
-        <Col xs={18} sm={16} md={12} lg={14} style={{ padding: '1%' }}>
-          <Card className=' text-center rounded shadow ' style={{ backgroundColor: '#165c96' }}>
+        <Col xs={24} sm={16} md={12} lg={14} style={{ padding: '1%' }}>
+          <Card className=' text-center rounded shadow p-2 ' style={{ backgroundColor: '#165c96' }}>
             {' '}
-            <h1 className='display-4 text-white' style={{ fontWeight: 'bold', fontSize: '3.5rem' }}>
+            <h1 className='display-4 text-white' style={{ fontWeight: 'bold' }}>
               Live Tracker
             </h1>
             <div className='mb-1'>
               <Button
+                className='btn'
                 style={{
                   backgroundColor: routeTypeFilter === 0 ? 'darkorange' : 'green',
                   margin: '4px',

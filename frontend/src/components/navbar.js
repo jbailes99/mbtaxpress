@@ -20,14 +20,14 @@ export default function Navbar() {
           top: 0,
         }}
       >
-        <Container>
-          <Nav className='flex-column'>
+        <Container className='d-flex align-content-center justify-content-center'>
+          <Nav className='flex-column '>
             <Nav.Link
               href='/home'
               style={{
                 color: '#FFFFFF',
                 marginBottom: '70%',
-                marginTop: '300%',
+                marginTop: '200%',
                 fontFamily: 'Arial, sans-serif',
                 fontWeight: 'bold',
                 fontSize: '120%',

@@ -135,7 +135,7 @@ function Stations() {
             <Card className='mb-1 text-center rounded shadow ' style={{ backgroundColor: '#165c96' }}>
               <header className='jumbotron '>
                 <div className='container'>
-                  <h1 className='display-4 text-white' style={{ fontWeight: 'bold', fontSize: '3.5rem' }}>
+                  <h1 className='display-4 text-white' style={{ fontWeight: 'bold' }}>
                     MBTA Stations
                   </h1>
                   <p className='lead text-white'>Explore the different stations and give them a review!</p>

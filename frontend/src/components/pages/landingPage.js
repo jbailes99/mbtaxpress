@@ -25,7 +25,7 @@ const Landingpage = () => {
     return (
       <Container fluid>
         <Col xs={18} sm={16} md={12} lg={15} style={{ padding: '1%' }}>
-          <Card className=' mb-4 text-center rounded shadow ' style={{ backgroundColor: '#165c96' }}>
+          <Card className=' mb-4 mt-3 mt-md-0 text-center rounded shadow ' style={{ backgroundColor: '#165c96' }}>
             <header className='jumbotron '>
               <div className='container'>
                 <h1 className='display-1 ' style={{ fontWeight: 'bold', color: 'orange' }}>
@@ -42,6 +42,16 @@ const Landingpage = () => {
             </header>
           </Card>
         </Col>
+        <Container className='justify-content-center d-flex'>
+          <Col xs={12} sm={16} md={10} lg={15} style={{ padding: '1%' }}>
+            <Container
+              style={{ width: '100%', height: '100%', backgroundColor: '#165c96' }}
+              className='text-center shadow-xl rounded-pill border'
+            >
+              <div className='text-center d-flex flex-column align-items-center justify-content-center'></div>
+            </Container>
+          </Col>
+        </Container>
         <div>
           <div className='d-flex justify-content-center align-items-center text-center mt-lg-5 mt-md-3 mt-sm-2 mt-1'>
             <div className='d-flex justify-content-center align-items-center text-center text-md-center px-4 '>
