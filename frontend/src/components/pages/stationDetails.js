@@ -322,7 +322,10 @@ function StationDetails({ recommendCount, notRecommendedCount }) {
             {' '}
             <header className='jumbotron '>
               <div className='container'>
-                <h1 className='dispaly-4 text-white' style={{ fontWeight: 'bold', fontSize: '3.5rem' }}>
+                <h1
+                  className='dispaly-4 text-white'
+                  style={{ fontWeight: 'bold', fontSize: '3.5rem', color: 'orange' }}
+                >
                   {station.attributes.name} -{' '}
                   {station.attributes.description
                     ? station.attributes.description.split('-')[1]?.trim()
@@ -465,95 +468,109 @@ function StationDetails({ recommendCount, notRecommendedCount }) {
           </Col>
         </Row>
 
-        <Row className='justify-content-center'>
-          <Col>
-            <div className='d-flex justify-content-center p-4'>
-              <div>
-                <h1 className='text-center'>Recent Reviews</h1>
-                <Card className='border-0 '>
-                  {reviews
-                    .sort((a, b) => new Date(b.date) - new Date(a.date))
-                    .map(review => (
-                      <div className='mt-2' key={review._id}>
-                        {/* Display each review here */}
-                        {review && review.user && (
-                          <>
-                            <div className='d-flex justify-content-center'>
-                              <Card className='border-0 '>
-                                <p className='text-center text-secondary'>
-                                  <b>
-                                    <span className='text-black'>{review.user}</span> says
-                                    <span
-                                      className={
-                                        review.recommendation === 'Recommended' ? 'text-success' : 'text-danger'
-                                      }
-                                    >
-                                      {' '}
-                                      {review.recommendation}
-                                    </span>
-                                  </b>
-                                </p>
-                                <div className='d-flex '>
-                                  <Container className='text-center w-50 ' style={{ wordWrap: 'break-word' }}>
-                                    {review.description}
-                                  </Container>
+        <Container className='justify-content-center d-flex mt-4'>
+          <Col xs={10}>
+            <hr />
+          </Col>
+        </Container>
+        <Row className='justify-content-center '>
+          <Col md={12}>
+            <Container className='border-0'>
+              {' '}
+              <div className=' p-4'>
+                <h1 className='text-center'>Commuter reviews</h1>
+
+                <Card className='border-0 mt-2' style={{ borderColor: '#165c96' }}>
+                  <div>
+                    <Card className='border-0 mt-4 '>
+                      {reviews
+                        .sort((a, b) => new Date(b.date) - new Date(a.date))
+                        .map(review => (
+                          <div className='mt-2' key={review._id}>
+                            {/* Display each review here */}
+                            {review && review.user && (
+                              <>
+                                <div className='d-flex justify-content-center'>
+                                  <Card className='border-0 '>
+                                    <p className='text-center text-secondary'>
+                                      <b>
+                                        <span className='text-black'>{review.user}</span> says
+                                        <span
+                                          className={
+                                            review.recommendation === 'Recommended' ? 'text-success' : 'text-danger'
+                                          }
+                                        >
+                                          {' '}
+                                          {review.recommendation}
+                                        </span>
+                                      </b>
+                                    </p>
+                                    <div className='d-flex '>
+                                      <Container className='text-center w-50 ' style={{ wordWrap: 'break-word' }}>
+                                        {review.description}
+                                      </Container>
+                                    </div>
+                                  </Card>
                                 </div>
-                              </Card>
+                              </>
+                            )}
+                            {userInfo && userInfo.username === review.user && (
+                              <Button
+                                className='mx-auto d-block mt-2'
+                                variant='danger'
+                                onClick={e => deleteReview(e, review._id)}
+                                style={{
+                                  fontSize: '14px',
+                                  padding: '2px 5px',
+                                }}
+                              >
+                                Delete
+                              </Button>
+                            )}
+                            {deleteStatuses[review._id] === 'Success' && (
+                              <div className='text-success'>Review deleted successfully!</div>
+                            )}
+                            {deleteStatuses[review._id] === 'Error' && (
+                              <div className='text-danger'>Error deleting review. Please try again.</div>
+                            )}
+
+                            <div className='mt-2 text-center ' key={review._id}>
+                              {' '}
+                              <button className='border-0 bg-gray  shake' onClick={() => handleVote(review._id, 1)}>
+                                {review.thumbsUp}{' '}
+                                <span role='img' aria-label='thumbs up'>
+                                  👍
+                                </span>
+                              </button>
+                              <button className='border-0 bg-gray  shake' onClick={() => handleVote(review._id, 0)}>
+                                👎{' '}
+                                <span role='img' aria-label='thumbs down'>
+                                  {review.thumbsDown}
+                                </span>
+                              </button>
                             </div>
-                          </>
-                        )}
-                        {userInfo && userInfo.username === review.user && (
-                          <Button
-                            className='mx-auto d-block mt-2'
-                            variant='danger'
-                            onClick={e => deleteReview(e, review._id)}
-                            style={{
-                              fontSize: '14px',
-                              padding: '2px 5px',
-                            }}
-                          >
-                            Delete
-                          </Button>
-                        )}
-                        {deleteStatuses[review._id] === 'Success' && (
-                          <div className='text-success'>Review deleted successfully!</div>
-                        )}
-                        {deleteStatuses[review._id] === 'Error' && (
-                          <div className='text-danger'>Error deleting review. Please try again.</div>
-                        )}
-
-                        <div className='mt-2 text-center ' key={review._id}>
-                          {' '}
-                          <button className='border-0 bg-gray  shake' onClick={() => handleVote(review._id, 1)}>
-                            {review.thumbsUp}{' '}
-                            <span role='img' aria-label='thumbs up'>
-                              👍
-                            </span>
-                          </button>
-                          <button className='border-0 bg-gray  shake' onClick={() => handleVote(review._id, 0)}>
-                            👎{' '}
-                            <span role='img' aria-label='thumbs down'>
-                              {review.thumbsDown}
-                            </span>
-                          </button>
-                        </div>
-                        <p className='text-center text-secondary'>
-                          {new Date(review.date).toLocaleString('en-US', {
-                            year: 'numeric',
-                            month: 'long',
-                            day: 'numeric',
-                            hour: 'numeric',
-                            minute: 'numeric',
-                            second: 'numeric',
-                          })}
-                        </p>
-
-                        <hr />
-                      </div>
-                    ))}
+                            <p className='text-center text-secondary'>
+                              {new Date(review.date).toLocaleString('en-US', {
+                                year: 'numeric',
+                                month: 'long',
+                                day: 'numeric',
+                                hour: 'numeric',
+                                minute: 'numeric',
+                                second: 'numeric',
+                              })}
+                            </p>
+                            <Container className='justify-content-center d-flex'>
+                              <Col xs={12} md={5}>
+                                <hr />
+                              </Col>
+                            </Container>
+                          </div>
+                        ))}
+                    </Card>
+                  </div>
                 </Card>
               </div>
-            </div>
+            </Container>
           </Col>
         </Row>
       </Row>
