@@ -87,7 +87,6 @@ function StationDetails({ recommendCount, notRecommendedCount }) {
   const submitReview = async e => {
     e.preventDefault()
     try {
-      // Assuming you have a reviews endpoint for submitting reviews
       const response = await axios.post(`${process.env.REACT_APP_BACKEND_SERVER_URI}/userReview/reviews`, {
         stationId: stationId, // Add stationId to associate the review with the station
         ...reviewData,
@@ -101,8 +100,6 @@ function StationDetails({ recommendCount, notRecommendedCount }) {
         stationId: stationId,
       })
 
-      // Optionally, you can perform any additional actions after a successful submission
-      // For example, updating the UI or navigating to a different page
       console.log('Review submitted successfully!')
       setSubmitStatus('Success')
     } catch (error) {
@@ -210,7 +207,9 @@ function StationDetails({ recommendCount, notRecommendedCount }) {
 
     async function fetchReviews() {
       try {
-        const reviewsResult = await api.get(`/userReview/getReviews/${stationId}`)
+        const reviewsResult = await api.get(
+          `${process.env.REACT_APP_BACKEND_SERVER_URI}/userReview/getReviews/${stationId}`
+        )
         const fetchedReviews = reviewsResult.data
 
         let recommendCount = 0
