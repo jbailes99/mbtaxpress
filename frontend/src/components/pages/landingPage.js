@@ -28,7 +28,7 @@ const Landingpage = () => {
           <Card className=' mb-4 text-center rounded shadow ' style={{ backgroundColor: '#165c96' }}>
             <header className='jumbotron '>
               <div className='container'>
-                <h1 className='display-4 ' style={{ fontWeight: 'bold', fontSize: '3.5rem', color: 'orange' }}>
+                <h1 className='display-1 ' style={{ fontWeight: 'bold', color: 'orange' }}>
                   MBTAXpress
                 </h1>
               </div>
@@ -118,7 +118,7 @@ const Landingpage = () => {
           <Card className=' mb-4 text-center rounded shadow mt-4 mt-md-0 ' style={{ backgroundColor: '#165c96' }}>
             <header className='jumbotron '>
               <div className='container'>
-                <h1 className='display-4' style={{ fontWeight: 'bold', fontSize: '3.5rem' }}>
+                <h1 className='display-1' style={{ fontWeight: 'bold' }}>
                   <span style={{ color: 'white' }}>MBTA</span>
                   <span style={{ color: 'orange' }}>Xpress</span>
                 </h1>
