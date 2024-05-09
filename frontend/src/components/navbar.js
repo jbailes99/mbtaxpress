@@ -102,27 +102,27 @@ export default function Navbar() {
 
       <ReactNavbar
         variant='dark'
-        className='d-block d-sm-none d-flex justify-content-center align-items-center'
+        className='d-block d-sm-none d-flex justify-content-center align-items-center '
         style={{
           backgroundColor: '#165c96',
-          height: '50px', // Adjust height as needed for mobile navbar
+          height: '54px', // Adjust height as needed for mobile navbar
           position: 'sticky',
           top: 0,
           zIndex: 5,
         }}
       >
-        <Nav className='text-center justify-content-center d-flex align-items-center' style={{ width: '100%' }}>
+        <Nav className='text-center justify-content-center d-flex align-items-center ' style={{ width: '100%' }}>
           <Nav.Link href='/home' style={{ color: '#FFFFFF' }}>
-            <i>Home</i>
+            Home
           </Nav.Link>
           <Nav.Link href='/mbtaTracker' style={{ color: '#FFFFFF' }}>
-            <i>MBTA Tracker</i>
+            MBTA Tracker
           </Nav.Link>
           <Nav.Link href='/mbtaAlert' style={{ color: '#FFFFFF' }}>
-            <i>MBTA Alerts</i>
+            MBTA Alerts
           </Nav.Link>
           <Nav.Link href='/mbtaStation' style={{ color: '#FFFFFF' }}>
-            <i>MBTA Stations</i>
+            MBTA Stations
           </Nav.Link>
           <NavDropdown
             title={<BsPerson size='30' />}
