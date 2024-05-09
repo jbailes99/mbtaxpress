@@ -3,7 +3,7 @@ import { Card, Button, Container, Col, Row } from 'react-bootstrap'
 import LeafletMap from './map' // Replace with the actual path to your LeafletMap component
 
 const Trackerpage = () => {
-  const [routeTypeFilter, setRouteTypeFilter] = useState(null)
+  const [routeTypeFilter, setRouteTypeFilter] = useState(1)
 
   const handleFilterClick = routeType => {
     setRouteTypeFilter(routeType)

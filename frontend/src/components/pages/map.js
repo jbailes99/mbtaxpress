@@ -113,7 +113,7 @@ const LeafletMap = ({ routeTypeFilter }) => {
 
   return (
     <Container className='p-1 rounded' style={{ height: '80vh', width: '100%', backgroundColor: '#165c96' }}>
-      <MapContainer style={{ height: '100%', width: '100%' }} center={[42.3601, -71.0589]} zoom={15}>
+      <MapContainer style={{ height: '100%', width: '100%' }} center={[42.3601, -71.0589]} zoom={12}>
         <TileLayer url='https://tile.openstreetmap.org/{z}/{x}/{y}.png' />
 
         {trainData.map(train => (
