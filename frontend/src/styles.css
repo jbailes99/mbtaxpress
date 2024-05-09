@@ -84,6 +84,11 @@
   background-color: #218838 !important; /* Darker shade of green */
 }
 
+.custom-hover:hover {
+  background-color: #67fd67 !important; /* Change background color on hover */
+}
+
+
 /* Hover effect for red cards */
 .red-card:hover {
   background-color: #c82333 !important; /* Darker shade of red */

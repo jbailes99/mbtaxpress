@@ -4,6 +4,8 @@ import Card from 'react-bootstrap/Card'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Container from 'react-bootstrap/Container'
+import Button from 'react-bootstrap/Button'
+
 import axios from 'axios'
 import getUserInfo from '../../utilities/decodeJwt'
 import { FaStar } from 'react-icons/fa'
@@ -130,7 +132,7 @@ function Stations() {
       <Card.Body>
         <Row className='justify-content-center'>
           <Col xs={18} sm={16} md={12} lg={15} style={{ padding: '1%' }}>
-            <Card className=' mb-4 text-center rounded shadow ' style={{ backgroundColor: '#165c96' }}>
+            <Card className='mb-1 text-center rounded shadow ' style={{ backgroundColor: '#165c96' }}>
               <header className='jumbotron '>
                 <div className='container'>
                   <h1 className='display-4 text-white' style={{ fontWeight: 'bold', fontSize: '3.5rem' }}>
@@ -139,8 +141,27 @@ function Stations() {
                   <p className='lead text-white'>Explore the different stations and give them a review!</p>
                 </div>
               </header>
+              <Container className='justify-content-center border-0 d-flex'>
+                <Col md={5}>
+                  <Card className='d-flex justify-content-center border-0 align-items-center mb-2'>
+                    <a
+                      href='/privateUserProfile'
+                      className='text-center btn custom-hover ' // Add a custom class for hover effect
+                      style={{
+                        width: '100%',
+                        fontWeight: 'bold',
+                        backgroundColor: 'lightgreen',
+                        border: '2px solid green', // Add outline border with desired thickness and color
+                      }}
+                    >
+                      Add a favorite?
+                    </a>
+                  </Card>
+                </Col>
+              </Container>
             </Card>
           </Col>
+
           <Container className='d-flex justify-content-center align-items-center mb-2'>
             <div className='d-flex flex-wrap justify-content-center'>
               <button
@@ -188,6 +209,7 @@ function Stations() {
                 </>
               )}
             </div>
+            <div></div>
           </Container>
 
           {renderErrorMessage()}
