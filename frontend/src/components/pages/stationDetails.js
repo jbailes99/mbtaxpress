@@ -315,19 +315,26 @@ function StationDetails({ recommendCount, notRecommendedCount }) {
   }
 
   return (
-    <Container>
-      <Col xs={14} sm={16} md={14} lg={14} style={{ padding: '1%', marginLeft: '4%' }}>
-        <Row className='justify-content-center'>
-          <Col>
-            <h1 className='text-center'>
-              {station.attributes.name} -{' '}
-              {station.attributes.description ? station.attributes.description.split('-')[1]?.trim() : 'Not available'}
-            </h1>
-          </Col>
-        </Row>
+    <Container fluid>
+      <Row className='justify-content-center'>
+        <Col xs={14} sm={16} md={12} lg={14} style={{ padding: '1%' }}>
+          <Card className='text-center rounded shadow ' style={{ backgroundColor: '#165c96' }}>
+            {' '}
+            <header className='jumbotron '>
+              <div className='container'>
+                <h1 className='dispaly-4 text-white' style={{ fontWeight: 'bold', fontSize: '3.5rem' }}>
+                  {station.attributes.name} -{' '}
+                  {station.attributes.description
+                    ? station.attributes.description.split('-')[1]?.trim()
+                    : 'Not available'}
+                </h1>
+              </div>
+            </header>
+          </Card>
+        </Col>
 
         <Row className='justify-content-center'>
-          <Col>
+          <Col md={9}>
             <div className='d-flex justify-content-center'>
               <Card className='mb-2 border-3 rounded shadow bg-danger text-white' style={{ width: '100%' }}>
                 {alerts.length === 0 ? (
@@ -350,7 +357,7 @@ function StationDetails({ recommendCount, notRecommendedCount }) {
         </Row>
 
         <Row className='justify-content-center'>
-          <Col>
+          <Col md={9}>
             <Card className='p-1 shadow rounded' style={{ backgroundColor: '#165c96' }}>
               <Map
                 longitude={station.attributes.longitude}
@@ -549,7 +556,7 @@ function StationDetails({ recommendCount, notRecommendedCount }) {
             </div>
           </Col>
         </Row>
-      </Col>
+      </Row>
     </Container>
   )
 }

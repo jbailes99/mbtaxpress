@@ -26,6 +26,13 @@
   }
 }
 
+/* @media (max-width: 200px) { 
+  .col-sm-1 {
+    width: 5px; 
+  }
+} */
+
+
 .shake:hover {
   animation: shake 0.5s ease-in-out; /* Adjust duration and timing function as needed */
 }

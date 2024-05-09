@@ -4,6 +4,8 @@ import { useNavigate } from 'react-router-dom'
 import Card from 'react-bootstrap/Card'
 import Container from 'react-bootstrap/Container'
 import Button from 'react-bootstrap/Button'
+import Col from 'react-bootstrap/Col'
+
 import getUserInfo from '../../utilities/decodeJwt'
 
 const Landingpage = () => {
@@ -21,23 +23,26 @@ const Landingpage = () => {
 
   if (user) {
     return (
-      <div style={{ padding: '4px', marginLeft: '13%' }}>
+      <Container fluid>
+        <Col xs={18} sm={16} md={12} lg={15} style={{ padding: '1%' }}>
+          <Card className=' mb-4 text-center rounded shadow ' style={{ backgroundColor: '#165c96' }}>
+            <header className='jumbotron '>
+              <div className='container'>
+                <h1 className='display-4 ' style={{ fontWeight: 'bold', fontSize: '3.5rem', color: 'orange' }}>
+                  MBTAXpress
+                </h1>
+              </div>
+              <h2
+                className='mt-4 rounded-pill text-center text-white p-4 d-flex justify-content-center '
+                style={{ backgroundColor: '#165c96', width: '100%' }}
+              >
+                Welcome back,&nbsp;
+                <span style={{ color: 'orange', fontWeight: 'bold' }}>{user.username}</span>
+              </h2>
+            </header>
+          </Card>
+        </Col>
         <div>
-          <div
-            className='d-flex flex-column text-black align-items-center justify-content-center p-4 rounded mx-auto'
-            style={{ width: '50%' }}
-          >
-            <div>
-              <h1 style={{ fontWeight: 'bold', fontSize: '5rem' }}>MBTAXpress</h1>
-            </div>
-            <h3
-              className='mt-4 rounded-pill text-white p-4 d-flex justify-content-center '
-              style={{ backgroundColor: '#165c96', width: '100%' }}
-            >
-              Welcome back,&nbsp;
-              <span style={{ color: 'orange', fontWeight: 'bold' }}>{user.username}</span>
-            </h3>
-          </div>
           {/* <div
             className='d-flex mb-4 flex-column align-items-center justify-content-center mt-4 p-4 rounded-pill mx-auto'
             style={{ width: '50%' }}
@@ -113,12 +118,12 @@ const Landingpage = () => {
             </div>
           </Container>
         </div>{' '}
-      </div>
+      </Container>
     )
   }
   if (!user) {
     return (
-      <div style={{ padding: '4px', marginLeft: '13%' }}>
+      <div style={{ padding: '4px' }}>
         <div>
           <h1 className='justify-content-center d-flex mt-4 ml-4 display-1 fw-bolder' style={{ color: '#165c96' }}>
             MBTAXpress
