@@ -1,282 +1,164 @@
 /* eslint-disable jsx-a11y/img-redundant-alt */
-import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import Card from "react-bootstrap/Card";
-import Container from "react-bootstrap/Container";
-import Button from "react-bootstrap/Button";
-import Col from "react-bootstrap/Col";
-
-import getUserInfo from "../../utilities/decodeJwt";
+import React, { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+import { Card, Container, Row, Col, Button } from 'react-bootstrap'
+import { FaMapMarkedAlt, FaBell, FaStar, FaTrain, FaBus, FaSubway } from 'react-icons/fa'
+import getUserInfo from '../../utilities/decodeJwt'
 
 const Landingpage = () => {
-  const navigate = useNavigate();
+  const navigate = useNavigate()
+  const [user, setUser] = useState({})
 
-  const [user, setUser] = useState({});
   useEffect(() => {
-    setUser(getUserInfo());
-  }, []);
+    setUser(getUserInfo())
+  }, [])
 
   const handleLogout = async () => {
-    localStorage.clear();
-    navigate("/");
-  };
+    localStorage.clear()
+    navigate('/')
+  }
+
+  const features = [
+    {
+      icon: <FaMapMarkedAlt size={48} className='text-warning mb-3' />,
+      title: 'Live Tracking',
+      description: 'Track any train, tram, subway, or bus in real-time with our interactive map.',
+      transportIcons: [<FaTrain key='train' />, <FaSubway key='subway' />, <FaBus key='bus' />],
+    },
+    {
+      icon: <FaBell size={48} className='text-warning mb-3' />,
+      title: 'Real-time Alerts',
+      description: 'Stay informed about delays, service changes, and important updates.',
+      transportIcons: [<FaTrain key='train' />, <FaSubway key='subway' />, <FaBus key='bus' />],
+    },
+    {
+      icon: <FaStar size={48} className='text-warning mb-3' />,
+      title: 'Station Reviews',
+      description: 'Join the community and share your experiences at MBTA stations.',
+      transportIcons: [<FaTrain key='train' />, <FaSubway key='subway' />, <FaBus key='bus' />],
+    },
+  ]
 
   if (user) {
     return (
-      <Container fluid>
-        <Col xs={18} sm={16} md={12} lg={15} style={{ padding: "1%" }}>
-          <Card
-            className=" mb-4 mt-3 mt-md-0 text-center rounded shadow "
-            style={{ backgroundColor: "#165c96" }}
-          >
-            <header className="jumbotron ">
-              <div className="container">
-                <h1
-                  className="display-1 "
-                  style={{ fontWeight: "bold", color: "orange" }}
-                >
-                  MBTAXpress
-                </h1>
-              </div>
-              <h2
-                className="mt-4 rounded-pill text-center text-white p-4 d-flex justify-content-center "
-                style={{ backgroundColor: "#165c96", width: "100%" }}
-              >
-                Welcome back,&nbsp;
-                <span style={{ color: "orange", fontWeight: "bold" }}>
-                  {user.username}
-                </span>
-              </h2>
-            </header>
-          </Card>
-        </Col>
-        <Container className="justify-content-center d-flex">
-          <Col xs={12} sm={16} md={10} lg={15} style={{ padding: "1%" }}>
-            <Container
-              style={{
-                width: "100%",
-                height: "100%",
-                backgroundColor: "#165c96",
-              }}
-              className="text-center shadow-xl rounded-pill border"
-            >
-              <div className="text-center d-flex flex-column align-items-center justify-content-center"></div>
-            </Container>
-          </Col>
-        </Container>
-        <div>
-          <div className="d-flex justify-content-center align-items-center text-center mt-lg-5 mt-md-3 mt-sm-2 mt-1">
-            <div className="d-flex justify-content-center align-items-center text-center text-md-center px-4 ">
-              <div className="card-body p-4">
-                <div className="row">
-                  <div className="col-sm-4">
-                    <img
-                      src="/mapImage.jpeg"
-                      alt="Live Tracking Image"
-                      className="img-fluid mb-3"
-                      style={{
-                        maxHeight: "240px", // Adjust the maximum height of the image
-                        width: "60%",
-                        objectFit: "cover",
-                      }}
-                    />
-                    <h5 className="display-5">Experience Live Tracking</h5>{" "}
-                    {/* Adjust text size */}
-                    <p className="small">
-                      View live tracking of any train, tram, subway, or bus
-                    </p>{" "}
-                    {/* Use small text size */}
-                  </div>
-                  <div className="col-sm-4">
-                    <img
-                      src="/alertsImage.png"
-                      alt="Live Tracking Image"
-                      className="img-fluid mb-3"
-                      style={{
-                        maxHeight: "240px", // Adjust the maximum height of the image
-                        width: "70%",
-                        objectFit: "cover",
-                      }}
-                    />
-                    <h5 className="display-5">Stay up to date with alerts</h5>{" "}
-                    {/* Adjust text size */}
-                    <p className="small">
-                      Keep up with any delays or service changes
-                    </p>{" "}
-                    {/* Use small text size */}
-                  </div>
-                  <div className="col-sm-4">
-                    <img
-                      src="/ratingImage.png"
-                      alt="Live Tracking Image"
-                      className="img-fluid mb-3"
-                      style={{
-                        maxHeight: "240px", // Adjust the maximum height of the image
-                        width: "40%",
-                        objectFit: "cover",
-                      }}
-                    />
-                    <h5 className="display-5 mt-2">Review and Rate stations</h5>{" "}
-                    {/* Adjust text size */}
-                    <p className="small">
-                      Check out your commuter community.
-                    </p>{" "}
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>{" "}
-          <Container className="d-flex justify-content-center">
-            <div className="mb-5">
-              <Card.Body>
-                <Card.Title className="text-center rfs-20 fw-bolder  mt-4">
-                  <div>
-                    <Button className="bg-danger" onClick={handleLogout}>
-                      Logout
-                    </Button>
-                  </div>{" "}
-                </Card.Title>
-              </Card.Body>
-            </div>
+      <Container fluid className='px-0'>
+        {/* Hero Section */}
+        <div
+          className='hero-section text-white py-5'
+          style={{
+            background: 'linear-gradient(rgba(22, 92, 150, 0.9), rgba(22, 92, 150, 0.9)), url("/mapImage.jpeg")',
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            minHeight: '60vh',
+            display: 'flex',
+            alignItems: 'center',
+          }}
+        >
+          <Container>
+            <Row className='align-items-center'>
+              <Col md={6}>
+                <h1 className='display-3 fw-bold mb-4'>Welcome to MBTAXpress</h1>
+                <p className='lead mb-4'>
+                  Your all-in-one solution for real-time MBTA tracking, alerts, and station information.
+                </p>
+                <Button variant='warning' size='lg' onClick={handleLogout} className='px-4 py-2'>
+                  Logout
+                </Button>
+              </Col>
+            </Row>
           </Container>
-        </div>{" "}
-      </Container>
-    );
-  }
-  if (!user) {
-    return (
-      <Container fluid>
-        <Col xs={18} sm={16} md={12} lg={15} style={{ padding: "1%" }}>
-          <Card
-            className=" mb-4 text-center rounded shadow mt-4 mt-md-0 "
-            style={{ backgroundColor: "#165c96" }}
-          >
-            <header className="jumbotron ">
-              <div className="container">
-                <h1 className="display-1" style={{ fontWeight: "bold" }}>
-                  <span style={{ color: "white" }}>MBTA</span>
-                  <span style={{ color: "orange" }}>Xpress</span>
-                </h1>
-              </div>
-              <Container
-                className="justify-content-center d-flex mb-4"
-                style={{ marginTop: "2rem" }}
-              >
-                <div className="col">
-                  <Card.Text>
-                    <a
-                      href="/login"
-                      className="btn"
-                      style={{
-                        fontSize: "1.5em",
-                        padding: "5px 10px",
-                        color: "white",
-                        backgroundColor: "orange",
-                      }}
-                    >
-                      Sign In
-                    </a>
-                  </Card.Text>
-                </div>
-                <div className="col">
-                  <Card.Text>
-                    <a
-                      href="/signup"
-                      className="btn "
-                      style={{
-                        fontSize: "1.5em",
-                        padding: "5px 10px",
-                        color: "white",
-                        backgroundColor: "orange",
-                      }}
-                    >
-                      Sign Up
-                    </a>
-                  </Card.Text>
-                </div>
-              </Container>
-            </header>
-          </Card>
-        </Col>
-        <Container className="d-flex flex-column align-items-center justify-content-center">
-          {/* Welcome Card */}
-          <Col xs={12} sm={16} md={6} lg={15} style={{ padding: "1%" }}>
-            <Container
-              style={{
-                width: "100%",
-                height: "100%",
-                backgroundColor: "#165c96",
-              }}
-              className="text-center shadow-xl rounded-pill border"
-            >
-              <div className="text-center d-flex flex-column align-items-center justify-content-center"></div>
-            </Container>
-          </Col>
-        </Container>
-        <Container className="d-flex mt-4 justify-content-center align-items-center text-center text-md-center px-4 ">
-          <Col md={15}>
-            <div className="card-body p-4">
-              <div className="row">
-                <div className="col-sm-4">
-                  <img
-                    src="/mapImage.jpeg"
-                    alt="Live Tracking Image"
-                    className="img-fluid mb-3"
-                    style={{
-                      maxHeight: "240px", // Adjust the maximum height of the image
-                      width: "60%",
-                      objectFit: "cover",
-                    }}
-                  />
-                  <h5 className="display-5">Experience Live Tracking</h5>{" "}
-                  {/* Adjust text size */}
-                  <p className="small">
-                    View live tracking of any train, tram, subway, or bus
-                  </p>{" "}
-                  {/* Use small text size */}
-                </div>
-                <div className="col-sm-4">
-                  <img
-                    src="/alertsImage.png"
-                    alt="Live Tracking Image"
-                    className="img-fluid mb-3"
-                    style={{
-                      maxHeight: "240px", // Adjust the maximum height of the image
-                      width: "70%",
-                      objectFit: "cover",
-                    }}
-                  />
-                  <h5 className="display-5">Stay up to date with alerts</h5>{" "}
-                  {/* Adjust text size */}
-                  <p className="small">
-                    Keep up with any delays or service changes
-                  </p>{" "}
-                  {/* Use small text size */}
-                </div>
-                <div className="col-sm-4">
-                  <img
-                    src="/ratingImage.png"
-                    alt="Live Tracking Image"
-                    className="img-fluid mb-3"
-                    style={{
-                      maxHeight: "240px", // Adjust the maximum height of the image
-                      width: "40%",
-                      objectFit: "cover",
-                    }}
-                  />
-                  <h5 className="display-5 mt-2">Review and Rate stations</h5>{" "}
-                  {/* Adjust text size */}
-                  <p className="small">
-                    Check out your commuter community.
-                  </p>{" "}
-                </div>
-              </div>
-            </div>
-          </Col>
-        </Container>
-      </Container>
-    );
-  }
-};
+        </div>
 
-export default Landingpage;
+        {/* Features Section */}
+        <Container className='py-5'>
+          <Row className='g-4'>
+            {features.map((feature, index) => (
+              <Col key={index} md={4}>
+                <Card className='h-100 border-0 shadow-sm hover-card'>
+                  <Card.Body className='text-center p-4'>
+                    <div className='feature-icon mb-4'>{feature.icon}</div>
+                    <h3 className='h4 mb-3'>{feature.title}</h3>
+                    <p className='text-muted mb-4'>{feature.description}</p>
+                    <div className='transport-icons d-flex justify-content-center gap-3'>
+                      {feature.transportIcons.map((icon, i) => (
+                        <span key={i} className='text-muted fs-4'>
+                          {icon}
+                        </span>
+                      ))}
+                    </div>
+                  </Card.Body>
+                </Card>
+              </Col>
+            ))}
+          </Row>
+        </Container>
+      </Container>
+    )
+  }
+
+  // Non-logged in view
+  return (
+    <Container fluid className='px-0'>
+      {/* Hero Section */}
+      <div
+        className='hero-section text-white py-5'
+        style={{
+          background: 'linear-gradient(rgba(22, 92, 150, 0.9), rgba(22, 92, 150, 0.9)), url("/mapImage.jpeg")',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          minHeight: '60vh',
+          display: 'flex',
+          alignItems: 'center',
+        }}
+      >
+        <Container>
+          <Row className='align-items-center'>
+            <Col md={6}>
+              <h1 className='display-3 fw-bold mb-4'>
+                <span className='text-white'>MBTA</span>
+                <span className='text-warning'>Xpress</span>
+              </h1>
+              <p className='lead mb-4'>
+                Your all-in-one solution for real-time MBTA tracking, alerts, and station information.
+              </p>
+              <div className='d-flex gap-3'>
+                <Button variant='warning' size='lg' href='/login' className='px-4 py-2'>
+                  Sign In
+                </Button>
+                <Button variant='outline-warning' size='lg' href='/signup' className='px-4 py-2'>
+                  Sign Up
+                </Button>
+              </div>
+            </Col>
+          </Row>
+        </Container>
+      </div>
+
+      {/* Features Section */}
+      <Container className='py-5'>
+        <Row className='g-4'>
+          {features.map((feature, index) => (
+            <Col key={index} md={4}>
+              <Card className='h-100 border-0 shadow-sm hover-card'>
+                <Card.Body className='text-center p-4'>
+                  <div className='feature-icon mb-4'>{feature.icon}</div>
+                  <h3 className='h4 mb-3'>{feature.title}</h3>
+                  <p className='text-muted mb-4'>{feature.description}</p>
+                  <div className='transport-icons d-flex justify-content-center gap-3'>
+                    {feature.transportIcons.map((icon, i) => (
+                      <span key={i} className='text-muted fs-4'>
+                        {icon}
+                      </span>
+                    ))}
+                  </div>
+                </Card.Body>
+              </Card>
+            </Col>
+          ))}
+        </Row>
+      </Container>
+    </Container>
+  )
+}
+
+export default Landingpage
